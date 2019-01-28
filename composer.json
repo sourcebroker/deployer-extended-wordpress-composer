@@ -1,0 +1,31 @@
+{
+  "name": "sourcebroker/deployer-extended-wordpress-composer",
+  "description": "Composer based WordPress deployment with deployer.org.",
+  "license": "MIT",
+  "keywords": [
+    "WordPress",
+    "deployer",
+    "bedrock",
+    "composer"
+  ],
+  "authors": [
+    {
+      "name": "Krystian Szymukowicz",
+      "email": "k.szymukowicz@gmail.com"
+    }
+  ],
+  "require": {
+    "wp-cli/wp-cli": "^1.2",
+    "deployer/dist": "~4.3.1",
+    "sourcebroker/deployer-extended": "^9.0.0",
+    "sourcebroker/deployer-extended-media": "^4.0.0",
+    "sourcebroker/deployer-extended-database": "^7.0.0",
+    "sourcebroker/deployer-loader": "^1.0.0",
+    "sourcebroker/deployer-bulk-tasks":"^2.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SourceBroker\\DeployerExtendedWordpressComposer\\": "src/"
+    }
+  }
+}
