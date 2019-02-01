@@ -2,6 +2,9 @@
 
 namespace Deployer;
 
+set('ssh_type', 'native');
+set('ssh_multiplexing', true);
+
 set('local/bin/wp', function () {
     $wpCliBin = null;
     if (testLocally('[ -e \'{{deploy_path}}/vendor/bin/wp\' ]')) {
@@ -22,7 +25,7 @@ set('shared_dirs', [
 
 set('shared_files', [
     'web/wp-config.php',
-    'web/.env',
+    '.env',
 ]);
 
 set('writable_dirs', [
@@ -31,19 +34,23 @@ set('writable_dirs', [
 );
 
 set('clear_paths', [
+    '.editorconfig',
+    '.env.example',
     '.git',
     '.gitattributes',
     '.gitignore',
+    'CHANGELOG.md',
+    'CODE_OF_CONDUCT.md',
+    'LICENSE.md',
+    'CONTRIBUTING.md',
+    'README.md',
     'composer.json',
     'composer.lock',
     'composer.phar',
-    'CHANGELOG.md',
-    'CONTRIBUTING.md',
-    'LICENSE.md',
+    'dependencies.yml',
     'phpcs.xml',
     'ruleset.xml',
-    'travis.yml',
-    'wp-cli.yml'
+    'travis.yml'
 ]);
 
 // Look on https://github.com/sourcebroker/deployer-extended#buffer-start for docs
@@ -58,14 +65,10 @@ set('buffer_config', [
 set('media',
     [
         'filter' => [
-            '+ /web/app/',
-            '- /wp-content/mu-plugins/*',
-            '- /wp-content/themes/*',
-            '+ /wp-content/**',
-            '+ /wp-admin/',
-            '+ /wp-admin/**',
-            '+ /wp-includes/',
-            '+ /wp-includes/**',
+            '+ web/',
+            '+ web/app/',
+            '+ web/app/uploads/',
+            '+ web/app/uploads/**',
             '- *'
         ]
     ]);
