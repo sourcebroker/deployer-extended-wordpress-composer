@@ -2,6 +2,8 @@
 
 namespace SourceBroker\DeployerExtendedWordpressComposer\Drivers;
 
+use Dotenv\Dotenv;
+
 /**
  * Class WordpressDriver
  * @package SourceBroker\DeployerExtended\Drivers
