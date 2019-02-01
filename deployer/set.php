@@ -22,6 +22,7 @@ set('shared_dirs', [
 
 set('shared_files', [
     'web/wp-config.php',
+    'web/.env',
 ]);
 
 set('writable_dirs', [
