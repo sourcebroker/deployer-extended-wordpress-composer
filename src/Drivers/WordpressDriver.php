@@ -47,11 +47,11 @@ class WordpressDriver
     {
         if (file_exists($absolutePathWithConfig . '/.env')) {
             (new Dotenv($absolutePathWithConfig))->load();
-            $instanceName = getenv('WP_INSTANCE');
+            $instanceName = getenv('WP_ENV');
             if (isset($instanceName) && strlen($instanceName)) {
                 $instanceName = strtolower($instanceName);
             } else {
-                throw new \Exception("\nWP_INSTANCE env variable is not set. \nIf this is your local instance then please put following line: \nWP_INSTANCE=local \nin configuration file: ' . $absolutePathWithConfig . '\n\n");
+                throw new \Exception("\nWP_ENV env variable is not set. \nIf this is your local instance then please put following line: \nWP_ENV=development \nin configuration file: ' . $absolutePathWithConfig . '\n\n");
             }
         } else {
             throw new \Exception('Missing file "' . $absolutePathWithConfig . '"/.env.');
