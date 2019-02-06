@@ -24,7 +24,6 @@ set('shared_dirs', [
 );
 
 set('shared_files', [
-    'web/wp-config.php',
     '.env',
 ]);
 
