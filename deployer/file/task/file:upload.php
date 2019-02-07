@@ -3,7 +3,7 @@
 namespace Deployer;
 
 task('file:upload', function () {
-    foreach (get('uploadDirs', []) as $uploadDir) {
+    foreach (get('file_upload', []) as $uploadDir) {
         $uploadFolderName = basename($uploadDir);
         $uploadDir = trim($uploadDir, '/\\');
         $uploadFolderPathOneLevelBelow = dirname($uploadDir);
