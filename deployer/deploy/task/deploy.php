@@ -30,6 +30,12 @@ task('deploy', [
     // Standard deployer deploy:vendors
     'deploy:vendors',
 
+    // Default build assets. "assets_path" and "assets_dist_path" must be set.
+    'assets_build',
+
+    // Uploads folders if defined in set('file_upload', ['/some/dir/to/upload']). You can define here build to be uploaded.
+    'file:upload',
+
     // Standard deployer deploy:clear_paths
     'deploy:clear_paths',
 
