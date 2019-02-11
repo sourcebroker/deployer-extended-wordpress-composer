@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+1.0.1
+~~~~~
+
+1) [BUGFIX] file_upload should be an array
+
 1.0.0
 ~~~~~
 
