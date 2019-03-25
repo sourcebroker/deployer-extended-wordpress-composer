@@ -7,15 +7,13 @@ set('ssh_multiplexing', true);
 set('web_path', 'web/');
 
 set('local/bin/wp', function () {
-    $wpCliBin = null;
-    if (testLocally('[ -e \'{{deploy_path}}/vendor/bin/wp\' ]')) {
-        $wpCliBin = parse('{{deploy_path}}/vendor/bin/wp');
-    } else {
-        $wpCliBin = runLocally('which wp')->toString();
+    $activePath = get('deploy_path') . '/' . (testLocally('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
+    $wpCliBin = $activePath .'/vendor/bin/wp';
+
+    if (!testLocally('[ -e ' . escapeshellarg($wpCliBin) .' ]')) {
+        throw new \Exception('WP-CLI package not found. Please add "wp-cli/wp-cli-bundle" to your composer dependencies.');
     }
-    if (!$wpCliBin) {
-        throw new \Exception('Can not determine wp_cli path. Make it available inside you PATH or use composer version.');
-    }
+
     return $wpCliBin;
 });
 
