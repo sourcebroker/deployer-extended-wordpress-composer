@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+2.0.0
+~~~~~
+
+1) [TASK][!!!BREAKING] Change th logic for finding "wp-cli" executable.
+
 1.0.1
 ~~~~~
 
