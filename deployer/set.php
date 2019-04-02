@@ -7,14 +7,23 @@ set('ssh_multiplexing', true);
 set('web_path', 'web/');
 
 set('local/bin/wp', function () {
-    $activePath = get('deploy_path') . '/' . (testLocally('[ -L {{deploy_path}}/release ]') ? 'release' : 'current');
+    $activePath = get('deploy_path');
     $wpCliBin = $activePath .'/vendor/bin/wp';
 
-    if (!testLocally('[ -e ' . escapeshellarg($wpCliBin) .' ]')) {
-        throw new \Exception('WP-CLI package not found. Please add "wp-cli/wp-cli-bundle" to your composer dependencies.');
+    if (testLocally('[ -e ' . escapeshellarg($wpCliBin) .' ]')) {
+        return './vendor/bin/wp';
+    } else {
+        $activePath .= testLocally('[ -L {{deploy_path}}/release ]')
+            ? 'release'
+            : 'current';
+        $wpCliBin = $activePath .'/vendor/bin/wp';
+
+        if (testLocally('[ -e ' . escapeshellarg($wpCliBin) .' ]')) {
+            return './vendor/bin/wp';
+        }
     }
 
-    return $wpCliBin;
+    throw new \Exception('WP-CLI package not found. Please add "wp-cli/wp-cli-bundle" to your composer dependencies.');
 });
 
 set('shared_dirs', [
