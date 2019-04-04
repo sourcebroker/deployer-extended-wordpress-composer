@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+3.0.0
+~~~~~
+
+1) [BUGFIX] Change the way the wp-cli binary is detected. It must be now present in vendor/bin.
+
 2.0.0
 ~~~~~
 
