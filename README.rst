@@ -138,6 +138,21 @@ the following commands will be done automatically after database import:
     wp search-replace http://sub.example.com http://sub-example-com.dev
 
 
+Should I use "deployer-extended-wordpress" or "deployer-extended-wordpress-composer"
+------------------------------------------------------------------------------------
+
+In "deployer-extended-wordpress" the WordPress and third party plugins are installed manually. What you have in git is
+basically only your theme. The good thing is that in such case you can update WordPress and plugins automatically.
+IMO this is preferable for low budget WordPress websites.
+
+In "deployer-extended-wordpress-composer" the WordPress and third party plugins are installed using composer.
+This way you gain more control over what is installed but at the same time to install new WordPress or new plugin
+version you need first to modify composer.json or do composer update (depending how big upgrade you do). Then you need
+to commit composer.json / composer.lock and do deploy which will install new version of WordPress and plugins.
+This is additional work that can not be easily automated. One of additional advantages of this solution is that you can
+easily cleanup infected WordPress/plugins files as with each deployment all php files are fresh (part from your git
+and part from composer repositories).
+
 
 .. _sourcebroker/deployer-extended: https://github.com/sourcebroker/deployer-extended
 .. _sourcebroker/deployer-extended-media: https://github.com/sourcebroker/deployer-extended-media
