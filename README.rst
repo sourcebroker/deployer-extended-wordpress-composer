@@ -141,11 +141,11 @@ the following commands will be done automatically after database import:
 Should I use "deployer-extended-wordpress" or "deployer-extended-wordpress-composer"?
 -------------------------------------------------------------------------------------
 
-In "deployer-extended-wordpress" the WordPress and third party plugins are installed manually. What you have in git is
+In `sourcebroker/deployer-extended-wordpress`_ the WordPress and third party plugins are installed manually. What you have in git is
 basically only your theme. The good thing is that in such case you can update WordPress and plugins automatically.
-IMO this is preferable for low budget WordPress websites.
+This can be considered as preferable for low budget WordPress websites.
 
-In "deployer-extended-wordpress-composer" the WordPress and third party plugins are installed using composer.
+In `sourcebroker/deployer-extended-wordpress-composer`_ the WordPress and third party plugins are installed using composer.
 This way you gain more control over what is installed but at the same time to install new WordPress or new plugin
 version you need first to modify composer.json or do composer update (depending how big upgrade you do). Then you need
 to commit composer.json / composer.lock and do deploy which will install new version of WordPress and plugins.
@@ -157,5 +157,7 @@ and part from composer repositories).
 .. _sourcebroker/deployer-extended: https://github.com/sourcebroker/deployer-extended
 .. _sourcebroker/deployer-extended-media: https://github.com/sourcebroker/deployer-extended-media
 .. _sourcebroker/deployer-extended-database: https://github.com/sourcebroker/deployer-extended-database
+.. _sourcebroker/deployer-extended-wordpress: https://github.com/sourcebroker/deployer-extended-wordpress
+.. _sourcebroker/deployer-extended-wordpress-composer: https://github.com/sourcebroker/deployer-extended-wordpress-composer
 .. _wp-cli/search-replace-command: https://github.com/wp-cli/search-replace-command
-.. _wp-cli/wp_cli: https://github.com/wp-cli/wp-cli
+.. _wp-cli/wp-cli: https://github.com/wp-cli/wp-cli
