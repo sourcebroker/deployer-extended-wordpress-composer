@@ -66,16 +66,16 @@ Installation
 
     server('live', '111.111.111.111')
         ->user('www-data')
-        ->set('public_urls', ['http://www.example.com/'])
+        ->set('public_urls', ['https://www.example.com/'])
         ->set('deploy_path', '/var/www/example.com.live');
 
     server('beta', '111.111.111.111')
         ->user('www-data')
-        ->set('public_urls', ['http://beta.example.com/'])
+        ->set('public_urls', ['https://beta.example.com/'])
         ->set('deploy_path', '/var/www/example.com.beta');
 
     server('local', 'localhost')
-        ->set('public_urls', ['http://example-com.dev/'])
+        ->set('public_urls', ['https://example-com.dev/'])
         ->set('deploy_path', getcwd());
 
 
@@ -113,16 +113,16 @@ Look at following example to give you idea:
 
     server('live', '111.111.111.111')
         ->user('www-data')
-        ->set('public_urls', ['http://www.example.com', 'http://sub.example.com'])
+        ->set('public_urls', ['https://www.example.com', 'https://sub.example.com'])
         ->set('deploy_path', '/var/www/example.com.live');
 
     server('beta', '111.111.111.111')
         ->user('www-data')
-        ->set('public_urls', ['http://beta.example.com', 'http://beta-sub.example.com'])
+        ->set('public_urls', ['https://beta.example.com', 'https://beta-sub.example.com'])
         ->set('deploy_path', '/var/www/example.com.beta');
 
     server('local', 'localhost')
-        ->set('public_urls', ['http://example-com.dev', 'http://sub-example-com.dev'])
+        ->set('public_urls', ['https://example-com.dev', 'https://sub-example-com.dev'])
         ->set('deploy_path', getcwd());
 
 
@@ -134,8 +134,8 @@ The if you will do:
 the following commands will be done automatically after database import:
 ::
 
-    wp search-replace http://www.example.com http://example-com.dev
-    wp search-replace http://sub.example.com http://sub-example-com.dev
+    wp search-replace https://www.example.com https://example-com.dev
+    wp search-replace https://sub.example.com https://sub-example-com.dev
 
 
 Should I use "deployer-extended-wordpress" or "deployer-extended-wordpress-composer"?
