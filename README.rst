@@ -6,6 +6,8 @@ deployer-extended-wordpress-composer
 What does it do?
 ----------------
 
+**NOTE! Its tested only with Deployer 4.3!**
+
 This package provides deploy task for deploying WordPress with deployer (deployer.org) and additionally a tasks
 to synchronize database and media files.
 
