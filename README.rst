@@ -138,8 +138,8 @@ the following commands will be done automatically after database import:
     wp search-replace http://sub.example.com http://sub-example-com.dev
 
 
-Should I use "deployer-extended-wordpress" or "deployer-extended-wordpress-composer"
-------------------------------------------------------------------------------------
+Should I use "deployer-extended-wordpress" or "deployer-extended-wordpress-composer"?
+-------------------------------------------------------------------------------------
 
 In "deployer-extended-wordpress" the WordPress and third party plugins are installed manually. What you have in git is
 basically only your theme. The good thing is that in such case you can update WordPress and plugins automatically.
@@ -158,3 +158,4 @@ and part from composer repositories).
 .. _sourcebroker/deployer-extended-media: https://github.com/sourcebroker/deployer-extended-media
 .. _sourcebroker/deployer-extended-database: https://github.com/sourcebroker/deployer-extended-database
 .. _wp-cli/search-replace-command: https://github.com/wp-cli/search-replace-command
+.. _wp-cli/wp_cli: https://github.com/wp-cli/wp-cli
