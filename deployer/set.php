@@ -100,4 +100,10 @@ set('db_dumpclean_keep', [
 ]);
 
 // update vhost template
-set('vhost_document_root', get('deploy_path') . '/current/web');
+set('vhost_document_root', function () {
+    if (get('vhost_nocurrent', false) === false) {
+        return get('deploy_path') . '/current/web';
+    } else {
+        return get('deploy_path') . '/web';
+    }
+});
