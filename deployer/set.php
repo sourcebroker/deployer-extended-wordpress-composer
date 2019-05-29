@@ -98,3 +98,6 @@ set('db_dumpclean_keep', [
     '*' => 5,
     'live' => 10,
 ]);
+
+// update vhost template
+set('vhost_document_root', get('deploy_path') . '/current/web');
