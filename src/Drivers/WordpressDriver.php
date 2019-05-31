@@ -2,7 +2,7 @@
 
 namespace SourceBroker\DeployerExtendedWordpressComposer\Drivers;
 
-use Dotenv\Dotenv;
+use Symfony\Component\Dotenv\Dotenv;
 
 /**
  * Class WordpressDriver
@@ -18,10 +18,12 @@ class WordpressDriver
      */
     public function getDatabaseConfig($absolutePathWithConfig = null)
     {
+        $envFilePath = $absolutePathWithConfig . '/.env';
+
         $absolutePathWithConfig = null === $absolutePathWithConfig ? getcwd() : $absolutePathWithConfig;
         $absolutePathWithConfig = rtrim($absolutePathWithConfig, DIRECTORY_SEPARATOR);
-        if (file_exists($absolutePathWithConfig . '/.env')) {
-            (new Dotenv($absolutePathWithConfig))->load();
+        if (file_exists($envFilePath)) {
+            (new Dotenv(true))->load($envFilePath);
             $dbSettings = [
                 'host' => getenv('DB_HOST'),
                 'port' => getenv('DB_PORT'),
@@ -30,7 +32,7 @@ class WordpressDriver
                 'password' => getenv('DB_PASSWORD'),
             ];
         } else {
-            throw new \Exception('Missing file "' . $absolutePathWithConfig . '"/.env.');
+            throw new \Exception('Missing file "' . $envFilePath . '".');
         }
         return $dbSettings;
     }
@@ -45,8 +47,9 @@ class WordpressDriver
      */
     public function getInstanceName($absolutePathWithConfig = null)
     {
-        if (file_exists($absolutePathWithConfig . '/.env')) {
-            (new Dotenv($absolutePathWithConfig))->load();
+        $envFilePath = $absolutePathWithConfig . '/.env';
+        if (file_exists($envFilePath)) {
+            (new Dotenv(true))->load($envFilePath);
             $instanceName = getenv('WP_ENV');
             if (isset($instanceName) && strlen($instanceName)) {
                 $instanceName = strtolower($instanceName);
@@ -54,7 +57,7 @@ class WordpressDriver
                 throw new \Exception("\nWP_ENV env variable is not set. \nIf this is your local instance then please put following line: \nWP_ENV=development \nin configuration file: ' . $absolutePathWithConfig . '\n\n");
             }
         } else {
-            throw new \Exception('Missing file "' . $absolutePathWithConfig . '"/.env.');
+            throw new \Exception('Missing file "' . $envFilePath . '".');
         }
         return $instanceName;
     }
