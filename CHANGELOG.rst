@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+4.0.0
+~~~~~
+
+1) [BUGFIX] Change Dotenv dependency to Symfony\Dotenv (possible breaking change)
+
 3.0.0
 ~~~~~
 
