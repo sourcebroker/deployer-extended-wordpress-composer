@@ -6,7 +6,7 @@ master
 ~~~~~~
 
 1) [BUGFIX] Update to deployer 6 and compatible deployer-extended-* stack.
-
+2) [TASK] Allow to override assets build command
 
 
 4.0.0
