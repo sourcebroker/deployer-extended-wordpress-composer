@@ -6,8 +6,6 @@ deployer-extended-wordpress-composer
 What does it do?
 ----------------
 
-**NOTE! Its tested only with Deployer 4.3!**
-
 This package provides deploy task for deploying WordPress with deployer (deployer.org) and additionally a tasks
 to synchronize database and media files.
 
@@ -66,22 +64,24 @@ Installation
 
     set('repository', 'git@my-git:my-project.git');
 
-    server('live', '111.111.111.111')
+    host('live')
+        ->hostname('111.111.111.111')->port(22)
         ->user('www-data')
         ->set('public_urls', ['https://www.example.com/'])
         ->set('deploy_path', '/var/www/example.com.live');
 
-    server('beta', '111.111.111.111')
+    host('beta')
+        ->hostname('111.111.111.111')->port(22)
         ->user('www-data')
         ->set('public_urls', ['https://beta.example.com/'])
         ->set('deploy_path', '/var/www/example.com.beta');
 
-    server('local', 'localhost')
-        ->set('public_urls', ['https://example-com.dev/'])
+    host('local')
+        ->set('public_urls', ['https://example-com.local/'])
         ->set('deploy_path', getcwd());
 
 
-Mind the declaration of server('local', 'localhost'); Its needed for database tasks to decalre domain replacements,
+Mind the declaration of host('local', 'localhost'); Its needed for database tasks to decalre domain replacements,
 and path to store database dumps.
 
 
@@ -113,17 +113,19 @@ every pair of corresponding urls.
 Look at following example to give you idea:
 ::
 
-    server('live', '111.111.111.111')
+    host('live')
+        ->hostname('111.111.111.111')
         ->user('www-data')
         ->set('public_urls', ['https://www.example.com', 'https://sub.example.com'])
         ->set('deploy_path', '/var/www/example.com.live');
 
-    server('beta', '111.111.111.111')
+    host('beta')
+        ->hostname('111.111.111.111')
         ->user('www-data')
         ->set('public_urls', ['https://beta.example.com', 'https://beta-sub.example.com'])
         ->set('deploy_path', '/var/www/example.com.beta');
 
-    server('local', 'localhost')
+    host('local')
         ->set('public_urls', ['https://example-com.dev', 'https://sub-example-com.dev'])
         ->set('deploy_path', getcwd());
 
