@@ -5,9 +5,9 @@ Changelog
 master
 ~~~~~~
 
-1) [BUGFIX] Update to deployer 6 and compatible deployer-extended-* stack.
+1) [TASK][BRAKING] Update to deployer 6 and compatible deployer-extended-* stack.
 2) [TASK] Allow to override assets build command
-
+3) [BUGFIX] Fix wrongly calculated $absolutePathWithConfig in driver.
 
 4.0.0
 ~~~~~

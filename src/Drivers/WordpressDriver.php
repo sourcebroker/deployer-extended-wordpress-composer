@@ -18,10 +18,9 @@ class WordpressDriver
      */
     public function getDatabaseConfig($absolutePathWithConfig = null)
     {
-        $envFilePath = $absolutePathWithConfig . '/.env';
-
-        $absolutePathWithConfig = null === $absolutePathWithConfig ? getcwd() : $absolutePathWithConfig;
+        $absolutePathWithConfig = $absolutePathWithConfig ?? getcwd();
         $absolutePathWithConfig = rtrim($absolutePathWithConfig, DIRECTORY_SEPARATOR);
+        $envFilePath = $absolutePathWithConfig . '/.env';
         if (file_exists($envFilePath)) {
             (new Dotenv(true))->load($envFilePath);
             $dbSettings = [
@@ -47,6 +46,8 @@ class WordpressDriver
      */
     public function getInstanceName($absolutePathWithConfig = null)
     {
+        $absolutePathWithConfig = $absolutePathWithConfig ?? getcwd();
+        $absolutePathWithConfig = rtrim($absolutePathWithConfig, DIRECTORY_SEPARATOR);
         $envFilePath = $absolutePathWithConfig . '/.env';
         if (file_exists($envFilePath)) {
             (new Dotenv(true))->load($envFilePath);
