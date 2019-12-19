@@ -2,6 +2,13 @@
 Changelog
 ---------
 
+master
+~~~~~~
+
+1) [BUGFIX] Update to deployer 6 and compatible deployer-extended-* stack.
+
+
+
 4.0.0
 ~~~~~
 

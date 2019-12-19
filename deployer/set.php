@@ -2,8 +2,7 @@
 
 namespace Deployer;
 
-set('ssh_type', 'native');
-set('ssh_multiplexing', true);
+set('allow_anonymous_stats', false);
 set('web_path', 'web/');
 
 set('local/bin/wp', function () {
