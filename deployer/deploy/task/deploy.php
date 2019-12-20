@@ -45,7 +45,7 @@ task('deploy', [
 
     // Clear php cli cache.
     // Read more on https://github.com/sourcebroker/deployer-extended#php-clear-cache-cli
-    'php:clear_cache_cli',
+    'cache:clear_php_cli',
 
     // Start buffering http requests. No frontend access possible from now.
     // Read more on https://github.com/sourcebroker/deployer-extended#buffer-start
@@ -56,7 +56,7 @@ task('deploy', [
 
     // Clear frontend http cache.
     // Read more on https://github.com/sourcebroker/deployer-extended#php-clear-cache-http
-    'php:clear_cache_http',
+    'cache:clear_php_http',
 
     // Frontend access possible again from now
     // Read more on https://github.com/sourcebroker/deployer-extended#buffer-stop
@@ -68,3 +68,6 @@ task('deploy', [
     // Standard deployer cleanup.
     'cleanup',
 ])->desc('Deploy your WordPress');
+
+
+after('deploy:failed', 'deploy:unlock');
