@@ -2,15 +2,15 @@
 
 namespace Deployer;
 
+use SourceBroker\DeployerExtendedDatabase\Utility\ConsoleUtility;
+use SourceBroker\DeployerInstance\Configuration;
+
 /**
  * Replace domains in current instance.
  */
 task('db:import:post_command:wp_domains', function () {
-    if (input()->getOption('dumpcode')) {
-        $dumpCode = input()->getOption('dumpcode');
-    } else {
-        throw new \Exception('No dumpcode set. [Error code: 1498321469492]');
-    }
+
+    $dumpCode = (new ConsoleUtility())->getOption('dumpcode', true);
     $dumpsForDumpCode = glob(get('db_storage_path_current') . '/' . '*dumpcode=' . $dumpCode . '*');
     if (empty($dumpsForDumpCode)) {
         throw new \Exception('Can not find dumps for dumpcode: ' . $dumpCode . '. [Error code: 1498321476975]');
@@ -23,16 +23,11 @@ task('db:import:post_command:wp_domains', function () {
         throw new \Exception('Can not determine source instance based on dump filename. [Error code: 1498321481427]');
     }
     $currentInstancePublicUrls = get('public_urls');
-    if (isset(Deployer::get()->environments[$sourceInstanceName])) {
-        $sourceInstance = Deployer::get()->environments[$sourceInstanceName];
-    } else {
-        throw new \Exception('Can not find instance with name: ' . $sourceInstanceName . ' [Error code: 1498321487045]');
-    }
-    $sourceInstancePublicUrls = $sourceInstance->get('public_urls');
-    if (count(get('public_urls')) === count($sourceInstance->get('public_urls'))) {
+    $sourceInstancePublicUrls = Configuration::getHost($sourceInstanceName)->get('public_urls');
+    if (count($currentInstancePublicUrls) === count($sourceInstancePublicUrls)) {
         $publicUrlsPairs = array_combine($sourceInstancePublicUrls, $currentInstancePublicUrls);
         foreach ($publicUrlsPairs as $publicUrlOld => $publicUrlNew) {
-            runLocally('{{local/bin/wp}} search-replace --all-tables --url=' . escapeshellarg(rtrim($publicUrlOld, '/')) . ' ' .
+            runLocally('{{local/bin/wp}} search-replace ' .
                 escapeshellarg(rtrim($publicUrlOld, '/')) . ' '
                 . escapeshellarg(rtrim($publicUrlNew, '/'))
             );

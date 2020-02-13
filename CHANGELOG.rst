@@ -10,6 +10,7 @@ master
 3) [BUGFIX] Fix wrongly calculated $absolutePathWithConfig in driver.
 4) [TASK] Add deploy:unlock after fail.
 5) [BUGFIX] Add deployer-instance to loader.
+6) [BUGFIX] Deployer 6.x compatibility - dumpcode argument missing in db:import:post_command:wp_domains
 
 4.0.0
 ~~~~~
