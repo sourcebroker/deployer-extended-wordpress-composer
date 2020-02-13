@@ -81,7 +81,7 @@ Installation
         ->set('deploy_path', getcwd());
 
 
-Mind the declaration of host('local', 'localhost'); Its needed for database tasks to decalre domain replacements,
+Mind the declaration of host('local', 'localhost'); Its needed for database tasks to declare domain replacements,
 and path to store database dumps.
 
 
@@ -97,7 +97,7 @@ Example of command for synchronizing database from live to local instance:
 You can also copy database from live to beta instance like:
 ::
 
-   dep db:copy live beta
+   dep db:copy live --options=target:beta
 
 
 
