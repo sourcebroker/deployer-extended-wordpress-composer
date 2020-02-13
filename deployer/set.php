@@ -72,8 +72,8 @@ set('default_stage', function () {
 
 // Return current instance name. Based on that scripts knows from which server() takes the data to database operations.
 set('current_stage', function () {
-    return (new \SourceBroker\DeployerExtendedWordpress\Driver)
-        ->getInstanceName(getcwd() . '/wp-config-local.php');
+    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
+        ->getInstanceName(getcwd());
 });
 
 set('target_stage', function () {
