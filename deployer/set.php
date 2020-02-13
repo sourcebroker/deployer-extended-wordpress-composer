@@ -64,15 +64,20 @@ set('media',
         ]
     ]);
 
-// Look https://github.com/sourcebroker/deployer-extended-database for docs
-set('db_instance', function () {
-    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
-        ->getInstanceName(getcwd());
-});
 
 set('default_stage', function () {
     return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
         ->getInstanceName(getcwd());
+});
+
+// Return current instance name. Based on that scripts knows from which server() takes the data to database operations.
+set('current_stage', function () {
+    return (new \SourceBroker\DeployerExtendedWordpress\Driver)
+        ->getInstanceName(getcwd() . '/wp-config-local.php');
+});
+
+set('target_stage', function () {
+    return !empty(input()->getArgument('stage')) ? input()->getArgument('stage') : get('default_stage');
 });
 
 set('db_default', [
