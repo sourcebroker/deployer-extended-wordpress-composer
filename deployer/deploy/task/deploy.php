@@ -3,11 +3,20 @@
 namespace Deployer;
 
 task('deploy', [
+    // Standard deployer deploy:info
+    'deploy:info',
+
     // Read more on https://github.com/sourcebroker/deployer-extended#deploy-check-lock
     'deploy:check_lock',
 
     // Read more on https://github.com/sourcebroker/deployer-extended#deploy-check-composer-install
     'deploy:check_composer_install',
+
+    // Read more on https://github.com/sourcebroker/deployer-extended#deploy-check-branch-local
+    'deploy:check_branch_local',
+
+    // Read more on https://github.com/sourcebroker/deployer-extended#deploy-check-branch
+    'deploy:check_branch',
 
     // Standard deployer deploy:prepare
     'deploy:prepare',
@@ -43,19 +52,23 @@ task('deploy', [
     // Read more on https://github.com/sourcebroker/deployer-extended-database#db-backup
     'db:backup',
 
-    // Clear php cli cache.
-    // Read more on https://github.com/sourcebroker/deployer-extended#php-clear-cache-cli
-    'cache:clear_php_cli',
-
     // Start buffering http requests. No frontend access possible from now.
     // Read more on https://github.com/sourcebroker/deployer-extended#buffer-start
     'buffer:start',
 
-    // Standard deployer symlink (symlink release/x/ to current/)
+    // Truncate caching tables
+    // Read more on https://github.com/sourcebroker/deployer-extended-database#db-truncate
+    'db:truncate',
+
+    // Standard deployers symlink (symlink release/x/ to current/)
     'deploy:symlink',
 
+    // Clear php cli cache.
+    // Read more on https://github.com/sourcebroker/deployer-extended#cache-clear-php-cli
+    'cache:clear_php_cli',
+
     // Clear frontend http cache.
-    // Read more on https://github.com/sourcebroker/deployer-extended#php-clear-cache-http
+    // Read more on https://github.com/sourcebroker/deployer-extended#cache-clear-php-http
     'cache:clear_php_http',
 
     // Frontend access possible again from now
@@ -67,7 +80,12 @@ task('deploy', [
 
     // Standard deployer cleanup.
     'cleanup',
-])->desc('Deploy your WordPress');
 
+    // Read more on https://github.com/sourcebroker/deployer-extended#deploy-extend-log
+    'deploy:extend_log',
+
+    // Standard deployer success.
+    'success',
+])->desc('Deploy your WordPress');
 
 after('deploy:failed', 'deploy:unlock');

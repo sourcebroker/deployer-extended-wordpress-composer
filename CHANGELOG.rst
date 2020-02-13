@@ -12,6 +12,7 @@ master
 5) [BUGFIX] Add deployer-instance to loader.
 6) [BUGFIX] Deployer 6.x compatibility - dumpcode argument missing in db:import:post_command:wp_domains
 7) [TASK] Increase default timeout to 900s.
+8) [TASK][BREAKING] Change deploy tasks to use more tasks from deployer-extended.
 
 4.0.0
 ~~~~~
