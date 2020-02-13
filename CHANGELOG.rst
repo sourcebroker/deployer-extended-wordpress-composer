@@ -5,10 +5,11 @@ Changelog
 master
 ~~~~~~
 
-1) [TASK][BRAKING] Update to deployer 6 and compatible deployer-extended-* stack.
-2) [TASK] Allow to override assets build command
+1) [TASK][BRAKING] Update to deployer 6 and compatible deployer-extended- stack.
+2) [TASK] Allow to override assets build command.
 3) [BUGFIX] Fix wrongly calculated $absolutePathWithConfig in driver.
-3) [TASK] Add dpelou:unlock after fail.
+4) [TASK] Add deploy:unlock after fail.
+5) [BUGFIX] Add deployer-instance to loader.
 
 4.0.0
 ~~~~~
