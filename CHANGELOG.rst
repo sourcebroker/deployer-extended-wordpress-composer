@@ -14,6 +14,7 @@ master
 7) [TASK] Increase default timeout to 900s.
 8) [TASK][BREAKING] Change deploy tasks to use more tasks from deployer-extended.
 9) [TASK] Deployer-instance changes.
+10) [TASK] Rename task names to not use ":" for Windows WSL compatibility.
 
 4.0.0
 ~~~~~
