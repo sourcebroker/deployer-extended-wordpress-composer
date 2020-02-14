@@ -16,6 +16,7 @@ master
 9) [TASK] Deployer-instance changes.
 10) [TASK] Rename task names to not use ":" for Windows WSL compatibility.
 11) [TASK] Increase sourcebroker/deployer-extended to 12.0.0
+12) [BUGFIX] Fix possible errors with wrong php version on host in db:import:post_command:wp_domains
 
 4.0.0
 ~~~~~

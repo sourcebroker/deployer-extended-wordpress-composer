@@ -83,7 +83,7 @@ set('target_stage', function () {
 set('db_default', [
     'ignore_tables_out' => [],
     'post_sql_in' => '',
-    'post_command' => ['{{local/bin/deployer}} db:import:post_command:wp_domains']
+    'post_command' => ['{{bin/php}} {{local/bin/deployer}} db:import:post_command:wp_domains']
 ]);
 
 set('db_databases',
