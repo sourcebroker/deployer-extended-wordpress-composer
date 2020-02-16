@@ -70,16 +70,6 @@ set('default_stage', function () {
         ->getInstanceName(getcwd());
 });
 
-// Return current instance name. Based on that scripts knows from which server() takes the data to database operations.
-set('current_stage', function () {
-    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
-        ->getInstanceName(getcwd());
-});
-
-set('target_stage', function () {
-    return !empty(input()->getArgument('stage')) ? input()->getArgument('stage') : get('default_stage');
-});
-
 set('db_default', [
     'ignore_tables_out' => [],
     'post_sql_in' => '',
