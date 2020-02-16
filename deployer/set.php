@@ -47,6 +47,11 @@ set('clear_paths', [
     'travis.yml'
 ]);
 
+set('default_stage', function () {
+    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
+        ->getInstanceName(getcwd());
+});
+
 // Look on https://github.com/sourcebroker/deployer-extended#buffer-start for docs
 set('buffer_config', [
         'index.php' => [
@@ -56,6 +61,9 @@ set('buffer_config', [
 );
 
 // Look https://github.com/sourcebroker/deployer-extended-media for docs
+set('media_allow_push_live', false);
+set('media_allow_copy_live', false);
+set('media_allow_link_live', false);
 set('media',
     [
         'filter' => [
@@ -67,18 +75,14 @@ set('media',
         ]
     ]);
 
-
-set('default_stage', function () {
-    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
-        ->getInstanceName(getcwd());
-});
-
+// Look https://github.com/sourcebroker/deployer-extended-database for docs
+set('db_allow_push_live', false);
+set('db_allow_pull_live', false);
 set('db_default', [
     'ignore_tables_out' => [],
     'post_sql_in' => '',
     'post_command' => ['export $(cat .env | xargs) && {{local/bin/deployer}} db:import:post_command:wp_domains']
 ]);
-
 set('db_databases',
     [
         'database_default' => [

@@ -18,6 +18,7 @@ master
 11) [TASK] Increase sourcebroker/deployer-extended to 12.0.0
 12) [BUGFIX] Fix possible errors with wrong php version on host in db:import:post_command:wp_domains
 13) [TASK] set('instance_local_name', 'development'), set('instance_live_name', 'production');
+14) [TASK] Disallow pushing, coping, pulling media and database to top instance.
 
 4.0.0
 ~~~~~
