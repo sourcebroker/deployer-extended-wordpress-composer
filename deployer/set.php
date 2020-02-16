@@ -2,6 +2,9 @@
 
 namespace Deployer;
 
+set('instance_local_name', 'development');
+set('instance_live_name', 'production');
+
 set('allow_anonymous_stats', false);
 set('web_path', 'web/');
 set('default_timeout', 900);
