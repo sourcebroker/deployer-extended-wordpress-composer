@@ -62,6 +62,7 @@ set('buffer_config', [
 
 // Look https://github.com/sourcebroker/deployer-extended-media for docs
 set('media_allow_push_live', false);
+set('media_allow_pull_live', false);
 set('media_allow_copy_live', false);
 set('media_allow_link_live', false);
 set('media',
@@ -78,6 +79,7 @@ set('media',
 // Look https://github.com/sourcebroker/deployer-extended-database for docs
 set('db_allow_push_live', false);
 set('db_allow_pull_live', false);
+set('db_allow_copy_live', false);
 set('db_default', [
     'ignore_tables_out' => [],
     'post_sql_in' => '',
