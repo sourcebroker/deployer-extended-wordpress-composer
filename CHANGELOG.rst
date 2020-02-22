@@ -21,6 +21,7 @@ master
 14) [TASK] Disallow pushing, coping, pulling media and database to top instance.
 15) [TASK][BREAKING] By setting ``set('branch_detect_to_deploy', false);`` change the default unsafe bahaviour
     of deployer to deploy the currently checked out branch. The branch must be set explicitly in host configuration.
+16) [TASK] Update deployer-extended-media, deployer-extended-database, deployer-instance, deployer-extended.
 
 4.0.0
 ~~~~~
