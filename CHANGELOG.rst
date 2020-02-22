@@ -19,6 +19,8 @@ master
 12) [BUGFIX] Fix possible errors with wrong php version on host in db:import:post_command:wp_domains
 13) [TASK] set('instance_local_name', 'development'), set('instance_live_name', 'production');
 14) [TASK] Disallow pushing, coping, pulling media and database to top instance.
+15) [TASK][BREAKING] By setting ``set('branch_detect_to_deploy', false);`` change the default unsafe bahaviour
+    of deployer to deploy the currently checked out branch. The branch must be set explicitly in host configuration.
 
 4.0.0
 ~~~~~

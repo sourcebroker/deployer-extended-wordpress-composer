@@ -2,6 +2,8 @@
 
 namespace Deployer;
 
+set('branch_detect_to_deploy', false);
+
 set('instance_local_name', 'development');
 set('instance_live_name', 'production');
 
