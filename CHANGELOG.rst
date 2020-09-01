@@ -2,8 +2,8 @@
 Changelog
 ---------
 
-master
-------
+5.0.0
+-----
 
 1) [BREAKING] Increase ``sourcebroker/deployer-extended``.
 2) [BREAKING] Increase ``deployer-extended-database``.
