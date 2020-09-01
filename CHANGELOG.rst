@@ -9,6 +9,7 @@ master
 2) [BREAKING] Increase ``deployer-extended-database``.
 3) [TASK] Extend dependency of symfony/dotenv to 5.0
 4) [TASK] Increase ``deployer/dist`` version.
+5) [TASK] Add '.ddev' to 'clear_paths'.
 
 4.0.0
 ~~~~~

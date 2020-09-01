@@ -30,6 +30,7 @@ set('writable_dirs', [
 );
 
 set('clear_paths', [
+    '.ddev',
     '.editorconfig',
     '.env.example',
     '.git',
