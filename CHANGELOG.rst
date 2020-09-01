@@ -2,6 +2,14 @@
 Changelog
 ---------
 
+master
+------
+
+1) [BREAKING] Increase ``sourcebroker/deployer-extended``.
+2) [BREAKING] Increase ``deployer-extended-database``.
+3) [TASK] Extend dependency of symfony/dotenv to 5.0
+4) [TASK] Increase ``deployer/dist`` version.
+
 4.0.0
 ~~~~~
 
