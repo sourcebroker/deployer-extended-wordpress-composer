@@ -2,10 +2,10 @@
 
 namespace Deployer;
 
-set('branch_detect_to_deploy', false);
+set('instance_local_name', 'dev');
+set('instance_live_name', 'live');
 
-set('instance_local_name', 'development');
-set('instance_live_name', 'production');
+set('branch_detect_to_deploy', false);
 
 set('allow_anonymous_stats', false);
 set('web_path', 'web/');
@@ -21,8 +21,10 @@ set('shared_dirs', [
 );
 
 set('shared_files', [
-    '.env',
+    'config/.env.local',
+    'web/.htaccess',
 ]);
+
 
 set('writable_dirs', [
         'web/app/uploads',
@@ -51,8 +53,8 @@ set('clear_paths', [
 ]);
 
 set('default_stage', function () {
-    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
-        ->getInstanceName(getcwd());
+    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver)
+        ->getInstanceName(getcwd() . '/config');
 });
 
 // Look on https://github.com/sourcebroker/deployer-extended#buffer-start for docs
@@ -83,18 +85,17 @@ set('media',
 set('db_allow_push_live', false);
 set('db_allow_pull_live', false);
 set('db_allow_copy_live', false);
-set('db_default', [
-    'ignore_tables_out' => [],
-    'post_sql_in' => '',
-    'post_command' => ['export $(cat .env | xargs) && {{local/bin/deployer}} db:import:post_command:wp_domains']
-]);
 set('db_databases',
     [
         'database_default' => [
-            get('db_default'),
+            [
+                'ignore_tables_out' => [],
+                'post_sql_in' => '',
+                'post_command' => ['export $(cat config/.env | grep PATH | xargs) && {{local/bin/deployer}} db:import:post_command:wp_domains']
+            ],
             function () {
-                return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\WordpressDriver)
-                    ->getDatabaseConfig(getcwd());
+                return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver())
+                    ->getDatabaseConfig(getcwd() . '/config');
             }
         ]
     ]
