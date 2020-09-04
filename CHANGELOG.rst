@@ -2,7 +2,7 @@
 Changelog
 ---------
 
-master
+6.0.0
 -----
 1) [BREAKING] Change ``set('instance_local_name', 'development'); set('instance_live_name', 'production');`` to ``set('instance_local_name', 'dev'); set('instance_live_name', 'live');``
 2) [BREAKING] Change shared files to ``set('shared_files', ['config/.env.local','web/.htaccess'])``;
