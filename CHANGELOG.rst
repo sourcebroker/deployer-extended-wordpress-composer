@@ -7,6 +7,7 @@ master
 1) [BREAKING] Change ``set('instance_local_name', 'development'); set('instance_live_name', 'production');`` to ``set('instance_local_name', 'dev'); set('instance_live_name', 'live');``
 2) [BREAKING] Change shared files to ``set('shared_files', ['config/.env.local','web/.htaccess'])``;
 3) [BREAKING] Move ``.env`` file to ``config/`` and use Symfony/Dotenv loadEnv() to have support for instance based env read.
+4) [BREAKING] Change default build command from ``npm ci && gulp build`` to ``npm ci && npm build``
 
 5.0.0
 -----
