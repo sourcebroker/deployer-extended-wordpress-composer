@@ -74,6 +74,7 @@ set('media',
     [
         'filter' => [
             '+ web/',
+            '+ web/.htaccess',
             '+ web/app/',
             '+ web/app/uploads/',
             '+ web/app/uploads/**',
