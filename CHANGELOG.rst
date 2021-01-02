@@ -2,6 +2,10 @@
 Changelog
 ---------
 
+master
+------
+1) [BREAKING] Update sourcebroker/deployer-extended-* stack.
+
 6.0.0
 -----
 1) [BREAKING] Change ``set('instance_local_name', 'development'); set('instance_live_name', 'production');`` to ``set('instance_local_name', 'dev'); set('instance_live_name', 'live');``
