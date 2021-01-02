@@ -5,6 +5,7 @@ Changelog
 master
 ------
 1) [BREAKING] Update sourcebroker/deployer-extended-* stack.
+2) [TASK] Add ddev.
 
 6.0.0
 -----
