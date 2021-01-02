@@ -54,7 +54,7 @@ set('clear_paths', [
 
 set('default_stage', function () {
     return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver)
-        ->getInstanceName(getcwd() . '/config');
+        ->getInstanceName(getcwd() . '/config/.env');
 });
 
 // Look on https://github.com/sourcebroker/deployer-extended#buffer-start for docs
@@ -96,7 +96,7 @@ set('db_databases',
             ],
             function () {
                 return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver())
-                    ->getDatabaseConfig(getcwd() . '/config');
+                    ->getDatabaseConfig(getcwd() . '/config/.env');
             }
         ]
     ]

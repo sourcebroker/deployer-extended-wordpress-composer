@@ -6,6 +6,7 @@ master
 ------
 1) [BREAKING] Update sourcebroker/deployer-extended-* stack.
 2) [TASK] Add ddev.
+3) [BREAKING] Add filename to argument of methods getDatabaseConfig() and getInstanceName() in EnvDriver class, refactor EnvDriver class.
 
 6.0.0
 -----
