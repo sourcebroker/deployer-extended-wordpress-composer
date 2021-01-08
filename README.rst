@@ -63,6 +63,7 @@ Installation
     new \SourceBroker\DeployerExtendedWordpressComposer\Loader();
 
     set('repository', 'git@my-git:my-project.git');
+    set('composer_channel', 2);
 
     host('live')
         ->hostname('111.111.111.111')->port(22)

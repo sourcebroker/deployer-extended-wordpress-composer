@@ -2,15 +2,17 @@
 Changelog
 ---------
 
-master
-------
+7.0.0
+~~~~~
+
 1) [BREAKING] Update sourcebroker/deployer-extended-* stack.
 2) [TASK] Add ddev.
 3) [BREAKING] Add filename to argument of methods getDatabaseConfig() and getInstanceName() in EnvDriver class, refactor EnvDriver class.
 4) [BUGFIX] Change build command from ``npm build`` to ``npm run build``
 
 6.0.0
------
+~~~~~
+
 1) [BREAKING] Change ``set('instance_local_name', 'development'); set('instance_live_name', 'production');`` to ``set('instance_local_name', 'dev'); set('instance_live_name', 'live');``
 2) [BREAKING] Change shared files to ``set('shared_files', ['config/.env.local','web/.htaccess'])``;
 3) [BREAKING] Move ``.env`` file to ``config/`` and use Symfony/Dotenv loadEnv() to have support for instance based env read.
@@ -18,7 +20,7 @@ master
 5) [BREAKING] Add ``web/.htaccess`` to files which are downloaded as media.
 
 5.0.0
------
+~~~~~
 
 1) [BREAKING] Increase ``sourcebroker/deployer-extended``.
 2) [BREAKING] Increase ``deployer-extended-database``.
