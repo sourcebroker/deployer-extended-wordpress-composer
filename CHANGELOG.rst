@@ -2,6 +2,11 @@
 Changelog
 ---------
 
+8.0.1
+~~~~~
+
+1) [BUGFIX] Fix dependencies mistake.
+
 8.0.0
 ~~~~~
 
