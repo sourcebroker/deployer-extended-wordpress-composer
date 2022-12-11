@@ -4,9 +4,8 @@ namespace Deployer;
 
 set('instance_local_name', 'dev');
 set('instance_live_name', 'live');
-
+set('composer_channel', 2);
 set('branch_detect_to_deploy', false);
-
 set('allow_anonymous_stats', false);
 set('web_path', 'web/');
 set('default_timeout', 900);
@@ -24,7 +23,6 @@ set('shared_files', [
     'config/.env.local',
     'web/.htaccess',
 ]);
-
 
 set('writable_dirs', [
         'web/app/uploads',
@@ -52,8 +50,8 @@ set('clear_paths', [
     'travis.yml'
 ]);
 
-set('default_stage', function () {
-    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver)
+set('local_host', function () {
+    return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver())
         ->getInstanceName(getcwd() . '/config/.env');
 });
 
@@ -92,7 +90,7 @@ set('db_databases',
             [
                 'ignore_tables_out' => [],
                 'post_sql_in' => '',
-                'post_command' => ['export $(cat config/.env | grep PATH | xargs) && {{local/bin/deployer}} db:import:post_command:wp_domains']
+                'post_command' => ['export $(cat config/.env | grep PATH | xargs) && export $(cat config/.env.local | grep PATH | xargs) && {{local/bin/deployer}} db:import:post_command:wp_domains ' . get('local_host')]
             ],
             function () {
                 return (new \SourceBroker\DeployerExtendedWordpressComposer\Drivers\EnvDriver())
@@ -107,12 +105,3 @@ set('db_dumpclean_keep', [
     '*' => 5,
     'live' => 10,
 ]);
-
-// update vhost template
-set('vhost_document_root', function () {
-    if (get('vhost_nocurrent', false) === false) {
-        return get('deploy_path') . '/current/web';
-    } else {
-        return get('deploy_path') . '/web';
-    }
-});

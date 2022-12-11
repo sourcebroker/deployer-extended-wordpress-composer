@@ -3,7 +3,8 @@
 namespace Deployer;
 
 task('deploy', [
-    // Standard deployer deploy:info
+
+    // Standard deployer task.
     'deploy:info',
 
     // Read more on https://github.com/sourcebroker/deployer-extended#deploy-check-lock
@@ -18,26 +19,30 @@ task('deploy', [
     // Read more on https://github.com/sourcebroker/deployer-extended#deploy-check-branch
     'deploy:check_branch',
 
-    // Standard deployer deploy:prepare
-    'deploy:prepare',
+    // Standard deployer task.
+    'deploy:check_remote',
 
-    // Standard deployer deploy:lock
+    // Standard deployer task.
+    'deploy:setup',
+
+    // Standard deployer task.
     'deploy:lock',
 
-    // Standard deployer deploy:release
+    // Standard deployer task.
     'deploy:release',
 
-    // Standard deployer deploy:update_code
+    // Standard deployer task.
     'deploy:update_code',
 
-    // Standard deployer deploy:shared
+    // Standard deployer task.
     'deploy:shared',
 
-    // Standard deployer deploy:writable
+    // Standard deployer task.
     'deploy:writable',
 
-    // Standard deployer deploy:vendors
+    // Standard deployer task.
     'deploy:vendors',
+
 
     // Default build assets. "assets_path" and "assets_dist_path" must be set.
     'assets:build',
@@ -45,7 +50,7 @@ task('deploy', [
     // Uploads folders if defined in set('file_upload', ['/some/dir/to/upload']). You can define here build to be uploaded.
     'file:upload',
 
-    // Standard deployer deploy:clear_paths
+    // Standard deployer task.
     'deploy:clear_paths',
 
     // Create database backup, compress and copy to database store.
@@ -60,7 +65,7 @@ task('deploy', [
     // Read more on https://github.com/sourcebroker/deployer-extended-database#db-truncate
     'db:truncate',
 
-    // Standard deployers symlink (symlink release/x/ to current/)
+    // Standard deployer task.
     'deploy:symlink',
 
     // Clear php cli cache.
@@ -75,17 +80,15 @@ task('deploy', [
     // Read more on https://github.com/sourcebroker/deployer-extended#buffer-stop
     'buffer:stop',
 
-    // Standard deployer deploy:unlock
+    // Standard deployer task.
     'deploy:unlock',
 
-    // Standard deployer cleanup.
-    'cleanup',
+    // Standard deployer task.
+    'deploy:cleanup',
 
-    // Read more on https://github.com/sourcebroker/deployer-extended#deploy-extend-log
-    'deploy:extend_log',
+    // Standard deployer task.
+    'deploy:success',
 
-    // Standard deployer success.
-    'success',
 ])->desc('Deploy your WordPress');
 
 after('deploy:failed', 'deploy:unlock');

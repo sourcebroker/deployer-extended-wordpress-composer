@@ -37,52 +37,47 @@ Installation
 
       composer require sourcebroker/deployer-extended-wordpress-composer
 
-2) If you are using deployer as composer package then just put following line in your deploy.php:
-   ::
-
-      new \SourceBroker\DeployerExtendedWordpressComposer\Loader();
-
-3) If you are using deployer as phar then put following lines in your deploy.php:
+2) If you are using deployer as phar then put following lines in your deploy.php:
    ::
 
       require __DIR__ . '/vendor/autoload.php';
       new \SourceBroker\DeployerExtendedWordpressComposer\Loader();
 
-4) Remove task "deploy" from your deploy.php. Otherwise you will overwrite deploy task defined in
+3) Remove task "deploy" from your deploy.php. Otherwise you will overwrite deploy task defined in
    deployer/deploy/task/deploy.php
 
-5) Example deploy.php file:
+4) Example deploy.php file:
    ::
 
     <?php
 
     namespace Deployer;
 
-    require __DIR__.'/vendor/autoload.php';
-
+    require_once(__DIR__ . '/vendor/sourcebroker/deployer-loader/autoload.php');
     new \SourceBroker\DeployerExtendedWordpressComposer\Loader();
 
     set('repository', 'git@my-git:my-project.git');
-    set('composer_channel', 2);
 
     host('live')
-        ->hostname('111.111.111.111')->port(22)
-        ->user('www-data')
+        ->setHostname('111.111.111.111')->port(22)
+        ->setRemoteUser('www-data')
+        ->set('branch', 'master')
         ->set('public_urls', ['https://www.example.com/'])
         ->set('deploy_path', '/var/www/example.com.live');
 
     host('beta')
-        ->hostname('111.111.111.111')->port(22)
-        ->user('www-data')
+        ->setHostname('111.111.111.111')->port(22)
+        ->setRemoteUser('www-data')
+        ->set('branch', 'beta')
         ->set('public_urls', ['https://beta.example.com/'])
         ->set('deploy_path', '/var/www/example.com.beta');
 
-    host('local')
+    host('dev')
         ->set('public_urls', ['https://example-com.local/'])
         ->set('deploy_path', getcwd());
 
 
-Mind the declaration of host('local', 'localhost'); Its needed for database tasks to declare domain replacements,
+Mind the declaration of host('dev'); Its needed for database tasks to declare domain replacements,
 and path to store database dumps.
 
 
@@ -115,18 +110,18 @@ Look at following example to give you idea:
 ::
 
     host('live')
-        ->hostname('111.111.111.111')
-        ->user('www-data')
+        ->setHostname('111.111.111.111')
+        ->setRemoteUser('www-data')
         ->set('public_urls', ['https://www.example.com', 'https://sub.example.com'])
         ->set('deploy_path', '/var/www/example.com.live');
 
     host('beta')
-        ->hostname('111.111.111.111')
-        ->user('www-data')
+        ->setHostname('111.111.111.111')
+        ->setRemoteUser('www-data')
         ->set('public_urls', ['https://beta.example.com', 'https://beta-sub.example.com'])
         ->set('deploy_path', '/var/www/example.com.beta');
 
-    host('local')
+    host('dev')
         ->set('public_urls', ['https://example-com.dev', 'https://sub-example-com.dev'])
         ->set('deploy_path', getcwd());
 

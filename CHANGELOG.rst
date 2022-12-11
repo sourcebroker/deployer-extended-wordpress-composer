@@ -2,6 +2,14 @@
 Changelog
 ---------
 
+8.0.0
+~~~~~
+
+1) [BREAKING] Upgrade for Deployer 7.
+2) [BREAKING] Remove ``deploy:extend_log`` task in favour of similar task build in in Deployer 7.
+3) [BREAKING] Variable ``vhost_document_root`` has been removed because it was used in automatic vhost creation
+   and this is no longer in `deployer-extended` package.
+
 7.0.0
 ~~~~~
 
