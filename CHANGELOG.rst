@@ -2,6 +2,12 @@
 Changelog
 ---------
 
+9.0.0
+~~~~~
+
+1) [BREAKING] Update dependencies to deployer-extended, deployer-extended-media, deployer-extended-database,
+   deployer-loader, symfony/dotenv.
+
 8.0.1
 ~~~~~
 
